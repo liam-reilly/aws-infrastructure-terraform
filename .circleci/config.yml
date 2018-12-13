@@ -12,6 +12,7 @@ jobs:
           name: terraform init
           command: terraform init
           working_directory: ~/build/deploy
+      - run: echo $AWS_ACCESS_KEY_ID
       - run:
           name: terraform plan
           command: terraform plan -input=false -out=terraform.plan -var 'aws_access_key=${$AWS_ACCESS_KEY_ID}' -var 'aws_secret_key=${$AWS_SECRET_ACCESS_KEY}'
