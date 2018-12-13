@@ -1,7 +1,7 @@
 version: 2
 jobs:
   review:
-    working_directory: ~/deploy/
+    working_directory: ~/build
     
     docker:
       - image: hashicorp/terraform:latest
