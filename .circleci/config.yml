@@ -8,9 +8,9 @@ jobs:
         
     steps:
       - checkout
-
-      working_directory: ~/build/deploy/
-        
+      - run:
+          name: change dir
+          command : cd ~/build/deploy
       - run:
           name: terraform init
           command: terraform init
@@ -24,7 +24,7 @@ jobs:
             - ./
 
   apply:
-    working_directory: ~/deploy/
+    working_directory: ~/build/deploy
 
     docker:
       - image: hashicorp/terraform:latest
