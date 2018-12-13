@@ -9,15 +9,14 @@ jobs:
     steps:
       - checkout
       - run:
-          name: change dir
-          command : cd ~/build/deploy
-      - run:
           name: terraform init
           command: terraform init
+          working_directory: ~/build/deploy
       - run:
           name: terraform plan
           command: terraform plan -input=false -out=terraform.plan
-      
+          working_directory: ~/build/deploy
+            
       - persist_to_workspace:
           root: /home/circleci/terraform
           paths:
@@ -35,6 +34,7 @@ jobs:
       - run:
           name: apply terraform plan
           command: terraform apply -input=false terraform.plan
+          working_directory: ~/build/deploy
           
 workflows:
   version: 2
