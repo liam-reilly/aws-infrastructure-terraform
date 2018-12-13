@@ -1,16 +1,38 @@
-dependencies:
-  pre:
-  - wget https://releases.hashicorp.com/terraform/0.11.10/terraform_0.11.10_linux_amd64.zip
-  - unzip terraform_0.11.10_linux_amd64.zip
+version: 2
+jobs:
+  review:
+    working_directory: ~/deploy/
+    docker:
+    - image: hashicorp/terraform:latest
+    - run:
+        name: terraform plan
+        command: ./terraform plan -input=false -out=terraform.plan
+    
+    - persist_to_workspace:
+        root: /home/circleci/terraform
+        paths:
+          - ./
 
-test:
-  override:
-  - ./terraform remote config -backend=S3 -backend-config="bucket=liam-reilly-terraform-state" -backend-config="key=infrastructure/terraform.tfstate" -backend-config="region=eu-west-2"
-  - ./terraform plan -out=terraform.plan
+  apply:
+    docker:
+    - image: hashicorp/terraform:latest
 
-deployment:
-  production:
-    branch: master
-    commands:
-    - ./terraform apply terraform.plan
-    - ./terraform remote push
+    working_directory: ~/deploy/
+    steps:
+    - attach_workspace:
+        at: /home/circleci/terraform
+    - run:
+        name: apply terraform plan
+        command: terraform apply -input=false terraform.plan
+workflows:
+  version: 2
+  review_apply:
+    jobs:
+    - review
+    - hold:
+        type: approval
+        requires:
+        - review
+    - apply:
+        requires:
+        - hold
