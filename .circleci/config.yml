@@ -1,0 +1,16 @@
+dependencies:
+  pre:
+  - wget https://releases.hashicorp.com/terraform/0.11.10/terraform_0.11.10_linux_amd64.zip
+  - unzip terraform_0.11.10_linux_amd64.zip
+
+test:
+  override:
+  - ./terraform remote config -backend=S3 -backend-config="bucket=liam-reilly-terraform-state" -backend-config="key=infrastructure/terraform.tfstate" -backend-config="region=eu-west-2"
+  - ./terraform plan -out=terraform.plan
+
+deployment:
+  production:
+    branch: master
+    commands:
+    - ./terraform apply terraform.plan
+    - ./terraform remote push
