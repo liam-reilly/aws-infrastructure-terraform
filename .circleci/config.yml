@@ -9,7 +9,7 @@ jobs:
     steps:
       - run:
           name: terraform plan
-          command: ./terraform plan -input=false -out=terraform.plan
+          command: terraform plan -input=false -out=terraform.plan
       
       - persist_to_workspace:
           root: /home/circleci/terraform
