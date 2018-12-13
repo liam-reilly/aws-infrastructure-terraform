@@ -13,15 +13,15 @@ jobs:
           command: terraform init
           working_directory: ~/build/deploy
 #      - run: echo $AWS_ACCESS_KEY_ID
-      - run:
-          name: get env vars
-          command: |
-            echo 'export AWS_KEY=$AWS_ACCESS_KEY_ID' >> $BASH_ENV
-            source $BASH_ENV          
-      - run: echo ${AWS_KEY}
+#      - run:
+#          name: get env vars
+#          command: |
+#            echo 'export AWS_KEY=$AWS_ACCESS_KEY_ID' >> $BASH_ENV
+#            source $BASH_ENV          
+#      - run: echo ${AWS_KEY}
       - run:
           name: terraform plan
-          command: terraform plan -input=false -out=terraform.plan -var 'aws_access_key=${AWS_KEY}' -var 'aws_secret_key=${$AWS_SECRET_ACCESS_KEY}'
+          command: terraform plan -input=false -out=terraform.plan -var 'aws_access_key='${$AWS_ACCESS_KEY_ID} -var 'aws_secret_key='${$AWS_SECRET_ACCESS_KEY}
           working_directory: ~/build/deploy
             
       - persist_to_workspace:
