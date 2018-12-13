@@ -15,7 +15,7 @@ jobs:
       - run:
           name: get env vars
           command: |
-            echo 'export AWS_KEY=${AWS_ACCESS_KEY_ID}' >> $BASH_ENV
+            echo 'export AWS_KEY=$AWS_ACCESS_KEY_ID' >> $BASH_ENV
             source $BASH_ENV          
       - run: echo ${AWS_KEY}
       - run:
