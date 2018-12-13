@@ -2,28 +2,33 @@ version: 2
 jobs:
   review:
     working_directory: ~/deploy/
-    docker:
-    - image: hashicorp/terraform:latest
-    - run:
-        name: terraform plan
-        command: ./terraform plan -input=false -out=terraform.plan
     
-    - persist_to_workspace:
-        root: /home/circleci/terraform
-        paths:
-          - ./
+    docker:
+      - image: hashicorp/terraform:latest
+        
+    steps:
+      - run:
+          name: terraform plan
+          command: ./terraform plan -input=false -out=terraform.plan
+      
+      - persist_to_workspace:
+          root: /home/circleci/terraform
+          paths:
+            - ./
 
   apply:
-    docker:
-    - image: hashicorp/terraform:latest
-
     working_directory: ~/deploy/
+
+    docker:
+      - image: hashicorp/terraform:latest
+
     steps:
-    - attach_workspace:
-        at: /home/circleci/terraform
-    - run:
-        name: apply terraform plan
-        command: terraform apply -input=false terraform.plan
+      - attach_workspace:
+          at: /home/circleci/terraform
+      - run:
+          name: apply terraform plan
+          command: terraform apply -input=false terraform.plan
+          
 workflows:
   version: 2
   review_apply:
