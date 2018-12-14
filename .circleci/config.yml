@@ -6,7 +6,9 @@ jobs:
     docker:
       - image: hashicorp/terraform:latest
         
-    steps:
+  environment:
+    - AWS_KEY: $AWS_ACCESS_KEY_ID
+  steps:
       - checkout
       - run:
           name: terraform init
@@ -23,7 +25,7 @@ jobs:
           name: terraform plan
           command: | 
             sh -c terraform plan -input=false -out=terraform.plan 
-              -var "aws_access_key=$AWS_ACCESS_KEY_ID"
+              -var "aws_access_key=${AWS_KEY}"
               -var "aws_secret_key=$AWS_SECRET_ACCESS_KEY"
           working_directory: ~/build/deploy
             
