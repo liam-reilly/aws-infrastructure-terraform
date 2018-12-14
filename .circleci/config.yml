@@ -42,10 +42,7 @@ workflows:
   review_apply:
     jobs:
     - review
-    - hold:
-        type: approval
-        requires:
-        - review
+      type: approval
     - apply:
         requires:
-        - hold
+        - review
