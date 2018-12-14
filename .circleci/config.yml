@@ -12,9 +12,11 @@ jobs:
           name: terraform init
           command: terraform init
           working_directory: ~/build/deploy
+          
+      
       - run:
           name: terraform plan
-          command: ./terraform-plan.sh
+          command: chmod +x terraform-plan.sh && ./terraform-plan.sh
           working_directory: ~/build/deploy
               
       - persist_to_workspace:
