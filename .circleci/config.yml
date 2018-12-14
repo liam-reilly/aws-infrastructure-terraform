@@ -24,7 +24,7 @@ jobs:
             - ./
 
   apply:
-    working_directory: ~/build/deploy
+    working_directory: ~/home/circleci/terraform/deploy
 
     docker:
       - image: hashicorp/terraform:latest
