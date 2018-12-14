@@ -27,7 +27,7 @@ jobs:
       - run:
           name: terraform plan
           command: |
-            sh -c ${TF_PLAN}
+            sh -c '${TF_PLAN}'
           working_directory: ~/build/deploy
               
       - persist_to_workspace:
