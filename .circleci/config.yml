@@ -15,7 +15,7 @@ jobs:
       - run:
           name: terraform plan
           command: |
-          terraform plan -input=false -out=terraform.plan -var "aws_access_key={{ .Environment.AWS_ACCESS_KEY_ID }}" -var "aws_secret_key={{ .Environment.AWS_SECRET_ACCESS_KEY }}"
+            terraform plan -input=false -out=terraform.plan -var "aws_access_key={{ .Environment.AWS_ACCESS_KEY_ID }}" -var "aws_secret_key={{ .Environment.AWS_SECRET_ACCESS_KEY }}"
           working_directory: ~/build/deploy
               
       - persist_to_workspace:
