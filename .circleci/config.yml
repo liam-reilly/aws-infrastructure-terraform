@@ -22,10 +22,11 @@ jobs:
       - run:
           name: terraform plan
           command: | 
-#            echo $AWS_KEY 
-            sh -c terraform plan -input=false -out=terraform.plan 
-              -var "aws_access_key=${AWS_KEY}"
-              -var "aws_secret_key=${AWS_SECRET_ACCESS_KEY}"
+            sh -c terraform plan 
+            -input=false 
+            -out=terraform.plan 
+            -var "aws_access_key=${AWS_KEY}"
+            -var "aws_secret_key=${AWS_SECRET_ACCESS_KEY}"
           working_directory: ~/build/deploy
             
       - persist_to_workspace:
