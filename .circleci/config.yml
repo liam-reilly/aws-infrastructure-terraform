@@ -13,14 +13,13 @@ jobs:
           command: terraform init
           working_directory: ~/build/deploy
           
-      
       - run:
           name: terraform plan
           command: sh ./terraform-plan.sh
           working_directory: ~/build/deploy
               
       - persist_to_workspace:
-          root: /home/build/
+          root: /home/circleci/build
           paths:
             - ./
 
