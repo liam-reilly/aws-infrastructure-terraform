@@ -34,8 +34,7 @@ jobs:
           at: /home/circleci/terraform
       - run:
           name: apply terraform plan
-          command: terraform apply -input=false terraform.plan
-          working_directory: ~/build/deploy
+          command: sh ./terraform-apply.sh
           
 workflows:
   version: 2
