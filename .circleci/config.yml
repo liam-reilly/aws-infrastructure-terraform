@@ -16,7 +16,7 @@ jobs:
       
       - run:
           name: terraform plan
-          command: chmod +x terraform-plan.sh && ./terraform-plan.sh
+          command: sh ./terraform-plan.sh
           working_directory: ~/build/deploy
               
       - persist_to_workspace:
