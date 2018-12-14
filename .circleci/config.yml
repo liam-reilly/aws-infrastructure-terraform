@@ -33,7 +33,7 @@ jobs:
       - attach_workspace:
           at: /home/circleci/terraform
       - run:
-          name: apply terraform plan
+          name: apply terraform
           command: sh ./terraform-apply.sh
           
 workflows:
