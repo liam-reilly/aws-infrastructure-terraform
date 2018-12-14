@@ -13,9 +13,14 @@ jobs:
           command: terraform init
           working_directory: ~/build/deploy
       - run:
+          name: circleci sucks
+          command: |
+            echo 'export TF_PLAN=terraform plan -input=false -out=terraform.plan -var 'aws_access_key=${AWS_ACCESS_KEY_ID}' -var 'aws_secret_key=${AWS_SECRET_KEY}'' >> $BASH_ENV
+            source $BASH_ENV
+      - run:
           name: terraform plan
           command: |
-            terraform plan -input=false -out=terraform.plan -var 'aws_access_key={{ .Environment.AWS_ACCESS_KEY_ID }}' -var 'aws_secret_key={{ .Environment.AWS_SECRET_ACCESS_KEY }}'
+            sh -c ${TF_PLAN}
           working_directory: ~/build/deploy
               
       - persist_to_workspace:
