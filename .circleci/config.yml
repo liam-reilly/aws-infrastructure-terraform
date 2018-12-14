@@ -5,20 +5,20 @@ jobs:
     
     docker:
       - image: hashicorp/terraform:latest
-        
-  steps:
+          
+    steps:
       - checkout
       - run:
           name: terraform init
           command: terraform init
           working_directory: ~/build/deploy
-#      - run: echo $AWS_ACCESS_KEY_ID
-#      - run:
-#          name: get env vars
-#          command: |
-#            echo 'export AWS_KEY=$AWS_ACCESS_KEY_ID' >> $BASH_ENV
-#            source $BASH_ENV          
-#      - run: echo ${AWS_KEY}
+  #      - run: echo $AWS_ACCESS_KEY_ID
+  #      - run:
+  #          name: get env vars
+  #          command: |
+  #            echo 'export AWS_KEY=$AWS_ACCESS_KEY_ID' >> $BASH_ENV
+  #            source $BASH_ENV          
+  #      - run: echo ${AWS_KEY}
       - run:
           name: terraform plan
           command: | 
@@ -28,7 +28,7 @@ jobs:
             -var "aws_access_key=${AWS_KEY}"
             -var "aws_secret_key=${AWS_SECRET_ACCESS_KEY}"
           working_directory: ~/build/deploy
-            
+              
       - persist_to_workspace:
           root: /home/build/
           paths:
