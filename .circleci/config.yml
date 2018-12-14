@@ -13,10 +13,17 @@ jobs:
           command: terraform init
           working_directory: ~/build/deploy
       - run:
-          name: circleci sucks
+          name: testing
           command: |
-            echo 'export TF_PLAN="terraform plan -input=false -out=terraform.plan -var 'aws_access_key=$AWS_ACCESS_KEY_ID' -var 'aws_secret_key=$AWS_SECRET_KEY'"' >> $BASH_ENV
+            echo 'export ZIP_FILE_NAME=liam-reilly.info-${CIRCLE_SHA1}.zip' >> $BASH_ENV
             source $BASH_ENV
+      - run: echo ${ZIP_FILE_NAME}         
+#      - run:
+#          name: circleci sucks
+#          command: |
+#            sed -e 's/$1/$AWS_ACCESS_KEY_ID' 
+#            echo 'export TF_PLAN="terraform plan -input=false -out=terraform.plan -var 'aws_access_key=$1' -var 'aws_secret_key=$2'"' >> $BASH_ENV
+#            source $BASH_ENV
       - run:
           name: terraform plan
           command: |
