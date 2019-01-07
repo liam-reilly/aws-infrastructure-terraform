@@ -14,9 +14,19 @@ variable "vpc_cidr" {
 variable "public_cidr" {
   description = "CIDR blocks for public subnets"
   default     = [
-    "10.100.0.0/24",
-    "10.100.85.0/24",
-    "10.100.170.0/24"
+    "10.0.0.0/24",
+    "10.0.85.0/24",
+    "10.0.170.0/24"
+  ]
+  type        = "list"
+}
+
+variable "private_cidr" {
+  description = "CIDR blocks for private subnets"
+  default     = [
+    "10.1.0.0/24",
+    "10.1.85.0/24",
+    "10.1.170.0/24"
   ]
   type        = "list"
 }
