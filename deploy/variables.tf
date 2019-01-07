@@ -8,15 +8,15 @@ variable "region" {
 
 variable "vpc_cidr" {
   description = "CIDR block range for VPC"
-  default     = "10.0.0.0/16"
+  default     = "10.100.0.0/16"
 }
 
 variable "public_cidr" {
   description = "CIDR blocks for public subnets"
   default     = [
-    "10.0.0.0/16",
-    "10.0.85.0/16",
-    "10.0.170.0/16"
+    "10.100.0.0/24",
+    "10.100.85.0/24",
+    "10.100.170.0/24"
   ]
   type        = "list"
 }
