@@ -11,6 +11,16 @@ variable "vpc_cidr" {
   default     = "10.0.0.0/16"
 }
 
+variable "public_cidr" {
+  description = "CIDR blocks for public subnets"
+  default     = [
+    "10.0.0.0/16",
+    "10.0.85.0/16",
+    "10.0.170.0/16"
+  ]
+  type        = "list"
+}
+
 variable "azs" {
   description = "Availability Zones in eu-west-2"
   type        = "list"
