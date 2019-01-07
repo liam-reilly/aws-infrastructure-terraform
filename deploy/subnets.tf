@@ -1,7 +1,7 @@
 resource "aws_subnet" "public-subnet" {
   count             = 3
   vpc_id            = "${aws_vpc.private.id}"
-  cidr_block        = "${element(var.vpc_cidr, count.index)}"
+  cidr_block        = "${var.vpc_cidr}"
   availability_zone = "${element(var.azs, count.index)}"
 
   tags {
