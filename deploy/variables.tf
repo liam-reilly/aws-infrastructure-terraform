@@ -25,8 +25,8 @@ variable "private_cidr" {
   description = "CIDR blocks for private subnets"
   default     = [
     "10.1.0.0/24",
-    "10.1.85.0/24",
-    "10.1.170.0/24"
+    "10.1.0.85/24",
+    "10.1.0170/24"
   ]
   type        = "list"
 }
