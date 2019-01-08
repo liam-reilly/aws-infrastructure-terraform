@@ -13,7 +13,7 @@ resource "aws_route" "default" {
 }
 
 resource "aws_route_table_association" "public-rtb" {
-  count          = 2
+  count          = "${length(var.azs)}"
   subnet_id      = "${element(aws_subnet.public-subnet.*.id, count.index)}"
   route_table_id = "${aws_route_table.public-route-table.id}"
 }
