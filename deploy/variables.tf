@@ -44,5 +44,9 @@ variable "data_cidr" {
 variable "azs" {
   description = "Availability Zones in eu-west-2"
   type        = "list"
-  default     = ["eu-west-2a", "eu-west-2b", "eu-west-2c"]
+  default     = [
+    "eu-west-2a", 
+    "eu-west-2b", 
+    "eu-west-2c"
+  ]
 }
