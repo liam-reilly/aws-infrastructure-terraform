@@ -5,7 +5,7 @@ resource "aws_subnet" "public-subnet" {
   availability_zone = "${element(var.azs, count.index)}"
 
   tags {
-    Name = "subnet.public.${var.region}.az${count.index + 1}"
+    Name = "public.${var.region}.az${count.index + 1}"
     Tier = "public"
   }
 }
@@ -17,7 +17,20 @@ resource "aws_subnet" "private-subnet" {
   availability_zone = "${element(var.azs, count.index)}"
 
   tags {
-    Name = "subnet.private.${var.region}.az${count.index + 1}"
+    Name = "private.${var.region}.az${count.index + 1}"
     Tier = "private"
   }
 }
+
+resource "aws_subnet" "data-subnet" {
+  count             = 3
+  vpc_id            = "${aws_vpc.private.id}"
+  cidr_block        = "${element(var.data_cidr, count.index)}"
+  availability_zone = "${element(var.azs, count.index)}"
+
+  tags {
+    Name = "data.${var.region}.az${count.index + 1}"
+    Tier = "data"
+  }
+}
+
