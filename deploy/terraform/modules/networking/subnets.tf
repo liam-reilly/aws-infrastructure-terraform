@@ -9,3 +9,15 @@ module "subnets-public" {
     "${cidrsubnet(var.vpc_cidr_block, 4, 8)}",
   ]
 }
+
+module "subnets-private" {
+  source     = "subnets-private"
+  aws_region = "${var.aws_region}"
+  vpc_id     = "${module.vpc.vpc_id}"
+
+  private_cidr_block = [
+    "${cidrsubnet(var.vpc_cidr_block, 4, 2)}",
+    "${cidrsubnet(var.vpc_cidr_block, 4, 6)}",
+    "${cidrsubnet(var.vpc_cidr_block, 4, 10)}",
+  ]
+}
