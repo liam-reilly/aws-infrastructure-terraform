@@ -5,8 +5,8 @@ module "subnets-public" {
 
   public_cidr_block = [
     "${cidrsubnet(var.vpc_cidr_block, 4, 0)}",
-    "${cidrsubnet(var.vpc_cidr_block, 4, 4)}",
-    "${cidrsubnet(var.vpc_cidr_block, 4, 8)}",
+    "${cidrsubnet(var.vpc_cidr_block, 4, 1)}",
+    "${cidrsubnet(var.vpc_cidr_block, 4, 2)}",
   ]
 }
 
@@ -16,9 +16,9 @@ module "subnets-private" {
   vpc_id     = "${module.vpc.vpc_id}"
 
   private_cidr_block = [
-    "${cidrsubnet(var.vpc_cidr_block, 4, 2)}",
-    "${cidrsubnet(var.vpc_cidr_block, 4, 6)}",
-    "${cidrsubnet(var.vpc_cidr_block, 4, 10)}",
+    "${cidrsubnet(var.vpc_cidr_block, 4, 3)}",
+    "${cidrsubnet(var.vpc_cidr_block, 4, 4)}",
+    "${cidrsubnet(var.vpc_cidr_block, 4, 5)}",
   ]
 }
 
@@ -28,9 +28,9 @@ module "subnets-data" {
   vpc_id     = "${module.vpc.vpc_id}"
 
   data_cidr_block = [
-    "${cidrsubnet(var.vpc_cidr_block, 5, 2)}",
-    "${cidrsubnet(var.vpc_cidr_block, 5, 4)}",
-    "${cidrsubnet(var.vpc_cidr_block, 5, 14)}",
+    "${cidrsubnet(var.vpc_cidr_block, 4, 6)}",
+    "${cidrsubnet(var.vpc_cidr_block, 4, 7)}",
+    "${cidrsubnet(var.vpc_cidr_block, 4, 8)}",
   ]
 }
 
