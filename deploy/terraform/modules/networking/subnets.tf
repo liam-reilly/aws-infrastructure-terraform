@@ -30,7 +30,7 @@ module "subnets-data" {
   data_cidr_block = [
     "${cidrsubnet(var.vpc_cidr_block, 5, 2)}",
     "${cidrsubnet(var.vpc_cidr_block, 5, 4)}",
-    "${cidrsubnet(var.vpc_cidr_block, 5, 6)}",
+    "${cidrsubnet(var.vpc_cidr_block, 5, 14)}",
   ]
 }
 
