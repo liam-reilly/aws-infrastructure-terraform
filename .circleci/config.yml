@@ -11,12 +11,12 @@ jobs:
       - run:
           name: terraform init
           command: terraform init
-          working_directory: ~/build/deploy
+          working_directory: ~/build/deploy/terraform
           
       - run:
           name: terraform plan
           command: sh ./terraform-plan.sh
-          working_directory: ~/build/deploy
+          working_directory: ~/build/deploy/scripts
               
       - persist_to_workspace:
           root: /root/build
@@ -24,7 +24,7 @@ jobs:
             - ./
 
   apply:
-    working_directory: /home/circleci/terraform/deploy
+    working_directory: /home/circleci/terraform/deploy/scripts
 
     docker:
       - image: hashicorp/terraform:latest
