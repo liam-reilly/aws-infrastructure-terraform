@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-cd terraform
+cd ../terraform
 terraform apply -input=false ./terraform.plan 

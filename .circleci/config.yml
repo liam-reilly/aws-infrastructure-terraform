@@ -11,7 +11,7 @@ jobs:
       - run:
           name: terraform init
           command: terraform init
-          working_directory: ~/build/deploy/terraform
+          working_directory: ~/build/deploy/scripts
           
       - run:
           name: terraform plan
