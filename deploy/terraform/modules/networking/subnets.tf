@@ -4,8 +4,8 @@ module "subnets-public" {
   vpc_id     = "${module.vpc.vpc_id}"
 
   public_cidr_block = [
-    "${cidrblock(var.vpc_cidr_block, 4, 0)}",
-    "${cidrblock(var.vpc_cidr_block, 4, 4)}",
-    "${cidrblock(var.vpc_cidr_block, 4, 8)}",
+    "${cidrsubnet(var.vpc_cidr_block, 4, 0)}",
+    "${cidrsubnet(var.vpc_cidr_block, 4, 4)}",
+    "${cidrsubnet(var.vpc_cidr_block, 4, 8)}",
   ]
 }
