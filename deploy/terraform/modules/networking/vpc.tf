@@ -3,3 +3,11 @@ module "vpc" {
   vpc_name   = "vpc.private.${var.aws_region}"
   cidr_block = "${var.vpc_cidr_block}"
 }
+
+output "vpc_id" {
+  value = "${module.vpc.vpc_id}"
+}
+
+output "subnets_public" {
+  value = "${module.subnets-public.public_subnet_ids}"
+}
