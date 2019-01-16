@@ -5,4 +5,6 @@ variable "internet_gateway_id" {}
 variable "availability_zones" {
   type = "list"
 }
-variable "public_subnet_ids" {}
+variable "public_subnet_ids" {
+  type = "list"
+}
