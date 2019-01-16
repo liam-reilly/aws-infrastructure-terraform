@@ -1,5 +1,5 @@
 module "subnets-public" {
-  source     = "subnets-public"
+  source     = "subnets/public/"
   aws_region = "${var.aws_region}"
   vpc_id     = "${module.vpc.vpc_id}"
 
@@ -11,7 +11,7 @@ module "subnets-public" {
 }
 
 module "subnets-private" {
-  source     = "subnets-private"
+  source     = "subnets/private"
   aws_region = "${var.aws_region}"
   vpc_id     = "${module.vpc.vpc_id}"
 
@@ -23,7 +23,7 @@ module "subnets-private" {
 }
 
 module "subnets-data" {
-  source     = "subnets-data"
+  source     = "subnets/data"
   aws_region = "${var.aws_region}"
   vpc_id     = "${module.vpc.vpc_id}"
 
