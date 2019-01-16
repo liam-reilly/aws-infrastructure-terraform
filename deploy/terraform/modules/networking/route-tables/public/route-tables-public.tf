@@ -1,5 +1,5 @@
 resource "aws_route_table" "public-route-table" {
-  vpc_id = "${var.vpc_id}}"
+  vpc_id = "${var.vpc_id}"
 
   tags {
     Name = "public-route-table.${var.aws_region}"
