@@ -15,7 +15,3 @@ output "vpc_cidr_block" {
 output "subnets_public" {
   value = "${module.subnets-public.public_subnet_ids}"
 }
-
-data "aws_nat_gateway" "nat" {
-  subnet_id = "${element(module.subnets-public.public_subnet_ids, 0)}"
-}
