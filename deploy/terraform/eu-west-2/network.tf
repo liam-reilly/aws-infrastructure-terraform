@@ -1,5 +1,6 @@
 module "eu-west-2" {
-  source         = "../modules/networking"
-  vpc_cidr_block = "${var.vpc_cidr}"
-  aws_region     = "${var.aws_region}"
+  source             = "../modules/networking"
+  vpc_cidr_block     = "${var.vpc_cidr}"
+  aws_region         = "${var.aws_region}"
+  availability_zones = "${var.availability_zones}"
 }

@@ -12,6 +12,10 @@ output "vpc_id" {
   value = "${aws_vpc.private.id}"
 }
 
+output "vpc_cidr_block" {
+  value = "${aws_vpc.private.cidr_block}"
+}
+
 //resource "aws_vpc_endpoint" "private-s3" {
 //  vpc_id          = "${aws_vpc.private.id}"                         #
 //  service_name    = "com.amazonaws.eu-west-2.s3"

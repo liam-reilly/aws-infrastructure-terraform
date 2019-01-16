@@ -8,3 +8,14 @@ variable "vpc_cidr" {
 variable "aws_region" {
   default = "eu-west-2"
 }
+
+variable "availability_zones" {
+  description = "Availability Zones in eu-west-2"
+  type        = "list"
+
+  default = [
+    "eu-west-2a",
+    "eu-west-2b",
+    "eu-west-2c",
+  ]
+}
