@@ -16,5 +16,5 @@ module "route-tables-private" {
   vpc_cidr_block     = "${module.vpc.vpc_cidr_block}"
   private_subnet_ids = "${module.subnets-private.private_subnet_ids}"
   public_subnet_ids  = "${module.subnets-public.public_subnet_ids}"
-  nat_gateway_ids    = "${module.gateways}"
+  nat_gateway_ids    = "${module.gateways.nat_gateway_ids}"
 }
