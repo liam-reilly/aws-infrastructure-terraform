@@ -18,3 +18,14 @@ module "route-tables-private" {
   public_subnet_ids  = "${module.subnets-public.public_subnet_ids}"
   nat_gateway_ids    = "${module.gateways.nat_gateway_ids}"
 }
+
+module "route-tables-data" {
+  source             = "route-tables/data/"
+  aws_region         = "${var.aws_region}"
+  availability_zones = "${var.availability_zones}"
+  vpc_id             = "${module.vpc.vpc_id}"
+  vpc_cidr_block     = "${module.vpc.vpc_cidr_block}"
+  data_subnet_ids    = "${module.subnets-data.data_subnet_ids}"
+  public_subnet_ids  = "${module.subnets-public.public_subnet_ids}"
+  nat_gateway_ids    = "${module.gateways.nat_gateway_ids}"
+}
