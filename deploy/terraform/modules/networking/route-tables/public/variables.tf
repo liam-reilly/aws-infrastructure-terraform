@@ -7,7 +7,4 @@ variable "availability_zones" {
 variable "public_subnet_ids" {
   type = "list"
 }
-variable "private_subnet_ids" {
-  type = "list"
-}
-variable "nat_gateway_ids" {}
+variable "internet_gateway_id" {}

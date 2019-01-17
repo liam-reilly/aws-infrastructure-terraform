@@ -18,5 +18,9 @@ resource "aws_nat_gateway" "nat-gateway" {
   count = "${length(var.availability_zones)}"
 
   allocation_id = "${element(aws_eip.nat_eip.*.id,count.index)}"
-  subnet_id = "${element(var.public_subnet_ids,count.index)}"
+  subnet_id     = "${element(var.public_subnet_ids,count.index)}"
+}
+
+output "nat_gateway_ids" {
+  value = "${aws_nat_gateway.nat-gateway.*.id}"
 }
